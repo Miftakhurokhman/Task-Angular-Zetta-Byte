@@ -6,7 +6,7 @@
     </div>
 </form>
 
-<div *ngIf="imageFind; else notFound" class="boxDetailImage p-4 rounded-2">
+<div *ngIf="imageFind" class="boxDetailImage p-4 rounded-2">
     <div class="row">
         <div class="col-8">
             <img [src]="imageFunded.image_url" alt="Detail Image" width="100%">
@@ -27,6 +27,3 @@
         </div>
     </div>    
 </div>
-<ng-template #notFound>
-    <h4 class="text-center">The title was you inputed was not found</h4>
-</ng-template>

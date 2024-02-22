@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './form-search.component.css'
 })
 export class FormSearchComponent {
-  imageFind: boolean = true; 
+  imageFind: boolean = false; 
 
   listImages= [
     {
@@ -73,7 +73,5 @@ export class FormSearchComponent {
         return
       }
     })
-
-    this.imageFind=false;
   }
 }
