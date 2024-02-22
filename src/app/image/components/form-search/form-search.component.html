@@ -1,0 +1,32 @@
+<form>
+    <div class="mb-3">
+        <label for="inputTitle" class="form-label">Input the image title</label>
+        <input [ngModel]="inputTitle" (input)="SearchImage($event)" type="text" class="form-control" id="inputTitle" name="inputTitle">
+
+    </div>
+</form>
+
+<div *ngIf="imageFind; else notFound" class="boxDetailImage p-4 rounded-2">
+    <div class="row">
+        <div class="col-8">
+            <img [src]="imageFunded.image_url" alt="Detail Image" width="100%">
+        </div>
+        <div class="col-4">
+            <div style="display: flex; align-items: center;">
+                <div class="rounded" [style.background-image]="'url(' + imageFunded.owner_photo + ')'" style="background-size: cover; width: 5vw; height: 5vw;">
+                </div>
+                <h4 class="mx-2">{{ imageFunded.owner }}</h4>
+            </div>
+            <hr>
+            <h3>
+                {{ imageFunded.image_title }}
+            </h3>
+            <p>
+                {{ imageFunded.description }}
+            </p>
+        </div>
+    </div>    
+</div>
+<ng-template #notFound>
+    <h4 class="text-center">The title was you inputed was not found</h4>
+</ng-template>
