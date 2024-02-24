@@ -1,0 +1,22 @@
+<div class="boxContent">
+    <h2 class="text-center">List your activity</h2>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Time</th>
+            <th scope="col">Activity Name</th>
+            <th scope="col">Type</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        <tr *ngFor="let activity of listActivities; let number = index">
+            <td>{{ number + 1 }}</td>
+            <td>{{ activity.time }}</td>
+            <td>{{ activity.activity_name }}</td>
+            <td>{{ activity.type }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
