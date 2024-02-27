@@ -1,8 +1,11 @@
 <div class="addActivity">
     <h2 class="text-center m-4">Make your to do list for tomorrow</h2>
+    <div *ngIf="addActivitySuccess">
+    <app-alert  [featureName] = "featureName"></app-alert>
+    </div>
     <div class="row">
         <div class="col-6 p-2">
-            <app-form-activity (activityAdded)="onActivityAdded($event)"></app-form-activity>
+            <app-form-activity [activityName] = "defaultActivityName" (activityAdded)="onActivityAdded($event)"></app-form-activity>
         </div>
         <div class="col-6 p-2">
             <app-list-activities [listActivities] = "listActivities"></app-list-activities>

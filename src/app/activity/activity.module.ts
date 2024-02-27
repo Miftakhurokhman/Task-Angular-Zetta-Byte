@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormActivityComponent } from './components/form-activity/form-activity.component';
 import { ListActivitiesComponent } from './components/list-activities/list-activities.component';
 import { AddActivityComponent } from './add-activity/add-activity.component';
+import { MessageModule } from '../message/message.module';
 import { FormsModule } from '@angular/forms';
 
 
@@ -11,11 +12,12 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     FormActivityComponent,
     ListActivitiesComponent,
-    AddActivityComponent
+    AddActivityComponent,
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MessageModule
   ],
   exports: [
     FormActivityComponent,

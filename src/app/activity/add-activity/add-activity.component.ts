@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-add-activity',
@@ -7,6 +7,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AddActivityComponent {
+  defaultActivityName: string = "Praying"
+  featureName :string = "Add activity"
+  addActivitySuccess :boolean = false;
   listActivities = [
     {
       time : "11:30",
@@ -21,6 +24,11 @@ export class AddActivityComponent {
   ];
 
   onActivityAdded(activityData : {time: string; type: string; activity_name:string}) {
-    this.listActivities.push(activityData)
+    this.listActivities.push(activityData);
+    this.addActivitySuccess = true;
+    setTimeout(() => {
+      this.addActivitySuccess = false;
+    }, 1500);
+    this.defaultActivityName = activityData.activity_name
   }
 }
