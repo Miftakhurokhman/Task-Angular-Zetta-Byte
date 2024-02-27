@@ -1,0 +1,7 @@
+<div class="guitarInformation">
+    <app-detail-guitar [choosedGuitar]="choosedGuitar"></app-detail-guitar>
+    <app-list-guitar (choosingCard)="SetDetailCard($event)"></app-list-guitar>
+    <div *ngIf="displayAlert">
+        <app-success-alert></app-success-alert>
+    </div>
+</div>

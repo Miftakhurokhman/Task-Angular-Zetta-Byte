@@ -1,0 +1,12 @@
+#Alert {
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(184, 254, 209);
+    height:  20vw;
+    width: 20vw;
+    border: solid rgb(84, 219, 131);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

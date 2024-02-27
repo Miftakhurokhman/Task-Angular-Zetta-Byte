@@ -1,0 +1,13 @@
+<div class="detailBox">
+    <img [src]="choosedGuitar.image_url" style="width: 60%; height: min-content;" alt="">
+    <div class="description" style="width: 35%;"> 
+        <h2 style="text-align: center;">{{ choosedGuitar.merk +" " + choosedGuitar.serial }}</h2>
+        <hr>
+        <h3 style="text-align: center;">{{"Rp. " + choosedGuitar.price }}</h3>
+
+        <h4>Type</h4>
+        <p style="margin-left: 10px;">{{ choosedGuitar.type }}</p>
+        <h4>Description</h4>
+        <p style="margin-left: 10px;">{{ choosedGuitar.description }}</p>
+    </div>
+</div>

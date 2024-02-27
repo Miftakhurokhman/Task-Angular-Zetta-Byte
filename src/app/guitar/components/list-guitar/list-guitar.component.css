@@ -1,0 +1,38 @@
+.listCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.boxCard {
+    min-width: 22%;
+}
+
+.card:hover {
+    margin: 0vw;
+    padding: 10px;
+    transition: 500ms;
+    background-color: rgb(176, 172, 172);
+}
+
+.card {
+    background-color: gainsboro;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.image {
+    border-radius: 5px;
+}
+
+.desc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0% 10%;
+}
+
+p {
+    width: 100%;
+}

@@ -1,0 +1,12 @@
+app-success-alert {
+    transition: ease-in, 200ms;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.guitarInformation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

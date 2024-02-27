@@ -1,0 +1,18 @@
+.detailBox {
+    background-color: gainsboro;
+    padding: 5px;
+    max-width: 700px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 0px;
+    align-items: center;
+}
+
+.description {
+    padding: 10px;
+}
+
+img {
+    border-radius: 5px;
+}
