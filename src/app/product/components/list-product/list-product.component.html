@@ -1,0 +1,32 @@
+<div class="my-4 row w-100 d-flex align-items-center justify-content-between">
+    <div class="col">
+        <h2>Select a product to view product details</h2>
+    </div>
+    <div class="col d-flex" style="flex-direction: column-reverse;">
+        <button (click)="addingNewProduct()" type="button" style="height: 60px;" class="btn btn-success">Add New Product</button>
+    </div>
+</div>
+
+<div class="listCard d-flex justify-content-center">
+    <div *ngIf="listProductIsEmpty; else listIsNotEmpty">
+        <h2 class="text-center">
+            List Product is empty
+        </h2>
+    </div>
+    <ng-template #listIsNotEmpty>
+        <div *ngFor="let product of productList" class="column">
+            <div (click)="getChoosedCard(product.id)" class="card">
+                <div class="image" [style.backgroundImage]="'url(' + product.image_url + ')'" style="width: 100%; height: 12vw; background-size: cover;"></div>
+                <div class="card-body">
+                <p class="card-text">{{ product.name }}</p>
+                <h6>{{ "Rp. " + product.price }}</h6>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    
+</div>
+
+<div *ngIf="addProduct">
+    <app-add-product (newProductHasBeenAdded)="newProductHasBeenAdded($event)"></app-add-product>
+</div>

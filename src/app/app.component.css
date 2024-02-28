@@ -1,0 +1,17 @@
+app-header {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 2;
+}
+
+app-add-product {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#emptyBox {
+    height: 80px;
+}
