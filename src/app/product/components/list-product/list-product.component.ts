@@ -8,6 +8,7 @@ import { ProductService } from '../../../shared/product.service';
 })
 export class ListProductComponent implements OnInit {
   @Output() choosedCard = new EventEmitter<(string)>();
+  @Output() addAlert = new EventEmitter<(string)>();
   public productList: any[] = [];
   addProduct: boolean = false;
   listProductIsEmpty: boolean = false;
@@ -31,5 +32,10 @@ export class ListProductComponent implements OnInit {
 
   newProductHasBeenAdded (productHasBeenAdded: boolean) {
     this.addProduct = !productHasBeenAdded;
+    this.addAlert.emit("added")
+  }
+
+  cancelAdd(cancel_add: boolean) {
+    this.addProduct = !cancel_add;
   }
 }

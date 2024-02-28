@@ -8,6 +8,7 @@ import { ProductService } from '../../../shared/product.service';
 })
 export class DetailProductComponent implements OnInit, OnChanges, OnDestroy {
   @Output() productHasBeenDeleted = new EventEmitter<(boolean)>();
+  @Output() updateAlert = new EventEmitter<(string)>();
   @Input() id: any;
   productDetail: any = {};
   idProductEdited: string = "";
@@ -44,10 +45,15 @@ export class DetailProductComponent implements OnInit, OnChanges, OnDestroy {
   productHasBeenUpdated(productIsUpdated : boolean) {
     console.log(this.editProduct);
     this.editProduct = !productIsUpdated;
+    this.updateAlert.emit("update");
   }
 
   deleteProduct(id: string) {
     this._productService.deleteProduct(id);
     this.productHasBeenDeleted.emit(true)
+  }
+
+  cancelUpdate(cancelUp: boolean) {
+    this.editProduct = !cancelUp;
   }
 }

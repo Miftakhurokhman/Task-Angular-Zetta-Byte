@@ -1,14 +1,14 @@
 <div id="detailProduct">
     <div class="col col-5">
         <img [src]="productDetail.image_url" width="100%" alt="Foto Produk">
-        <div class="mx-3 mt-3 row">
+        <div class="mx-3 row">
             <div class="col">
-                <button (click)="editingProduct(productDetail.id)" type="button" class="btn btn-outline-warning d-flex justify-content-center">
+                <button (click)="editingProduct(productDetail.id)" type="button" class="btn btn-outline-warning d-flex justify-content-center mt-3">
                     <h6 class="text-center mt-1">Edit</h6>
                 </button>
             </div>
             <div class="col">
-                <button (click)="deleteProduct(productDetail.id)" type="button" class="btn btn-outline-danger d-flex justify-content-center">
+                <button (click)="deleteProduct(productDetail.id)" type="button" class="btn btn-outline-danger d-flex justify-content-center mt-3">
                     <h6 class="text-center mt-1">Delete</h6>
                 </button>
             </div>
@@ -26,6 +26,6 @@
         <p class="desc">{{ productDetail.description }}</p>
     </div>
     <div *ngIf="editProduct">
-        <app-add-product [productDetail]="productDetail" [changeId]="id" (productHasBeenUpdated)="productHasBeenUpdated($event)"></app-add-product>
+        <app-add-update-product (cancelUpdate)="cancelUpdate($event)" [productDetail]="productDetail" [changeId]="id" (productHasBeenUpdated)="productHasBeenUpdated($event)"></app-add-update-product>
     </div>
 </div>

@@ -10,6 +10,9 @@ import { SuccessAlertComponent } from './success-alert/success-alert.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    SuccessAlertComponent
   ]
 })
 export class MessageModule { }

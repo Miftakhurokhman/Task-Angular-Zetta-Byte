@@ -6,14 +6,23 @@ import { Component } from '@angular/core';
   styleUrl: './products-information.component.css'
 })
 export class ProductsInformationComponent {
-  displayDetail: boolean = false
+  alertMessage: string =""
+  displayDetail: boolean = false;
+  displayAlert: boolean = false;
   idDetail: string = "";
   getDetailCard(id: string) {
     this.idDetail = id;
     this.displayDetail =  true;
   }
 
+  openAlert(message: string) {
+    this.alertMessage = message;
+    this.displayAlert = true;
+    setTimeout(()=>{this.displayAlert= false},2500)
+  }
+
   productHasBeenDeleted(productDeleted: boolean) {
     this.displayDetail= !productDeleted
+    this.openAlert("deleted")
   }
 }

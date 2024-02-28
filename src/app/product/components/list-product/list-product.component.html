@@ -28,5 +28,5 @@
 </div>
 
 <div *ngIf="addProduct">
-    <app-add-product (newProductHasBeenAdded)="newProductHasBeenAdded($event)"></app-add-product>
+    <app-add-update-product (cancelAdd)="cancelAdd($event)" (newProductHasBeenAdded)="newProductHasBeenAdded($event)"></app-add-update-product>
 </div>

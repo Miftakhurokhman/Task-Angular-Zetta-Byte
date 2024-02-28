@@ -1,0 +1,22 @@
+#boxAlert {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#alert {
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    border: solid #71f280 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #7AB54B
+}

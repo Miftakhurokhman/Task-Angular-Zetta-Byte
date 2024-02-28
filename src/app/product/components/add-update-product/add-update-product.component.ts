@@ -2,13 +2,15 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 import { ProductService } from '../../../shared/product.service';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.css'
+  selector: 'app-add-update-product',
+  templateUrl: './add-update-product.component.html',
+  styleUrl: './add-update-product.component.css'
 })
 export class AddProductComponent implements OnInit, OnDestroy{
   @Output() productHasBeenUpdated = new EventEmitter<(boolean)>();
   @Output() newProductHasBeenAdded = new EventEmitter<(boolean)>();
+  @Output() cancelUpdate = new EventEmitter<(boolean)>();
+  @Output() cancelAdd = new EventEmitter<(boolean)>();
   @Input() changeId: any;
   @Input() productDetail: any = {};
   productUpdated = {
@@ -93,9 +95,9 @@ export class AddProductComponent implements OnInit, OnDestroy{
 
   cancelForm(){
     if (this.editProduct) {
-      this.productHasBeenUpdated.emit(true);
+      this.cancelUpdate.emit(true);
     } else {
-      this.newProductHasBeenAdded.emit(true);
+      this.cancelAdd.emit(true);
     }
   }
 }

@@ -1,8 +1,10 @@
 <div class="row">
     <div *ngIf="displayDetail" class="col-lg-7">
-        <app-detail-product (productHasBeenDeleted)="productHasBeenDeleted($event)" [id]="idDetail"></app-detail-product>
+        <app-detail-product (updateAlert)="openAlert($event)" (productHasBeenDeleted)="productHasBeenDeleted($event)" [id]="idDetail"></app-detail-product>
     </div>
     <div class="col">
-        <app-list-product (choosedCard)="getDetailCard($event)"></app-list-product>
+        <app-list-product (addAlert)="openAlert($event)" (choosedCard)="getDetailCard($event)"></app-list-product>
     </div>
 </div>
+
+<app-success-alert *ngIf="displayAlert" [message]="alertMessage"></app-success-alert>
