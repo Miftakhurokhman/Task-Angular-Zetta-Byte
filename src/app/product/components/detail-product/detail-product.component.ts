@@ -20,7 +20,7 @@ export class DetailProductComponent implements OnInit, OnDestroy {
   constructor(private _productService: ProductService, private route: ActivatedRoute, private router:Router) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
       this.id = params['id'];
       this.loadProductDetail();
     });
@@ -30,6 +30,11 @@ export class DetailProductComponent implements OnInit, OnDestroy {
       this.productDetail=[];
       this.id="";
       this.alert.message = "";
+  }
+
+  saveProductID () {
+    console.log("tes");
+    this._productService.sendChoosedProduct(this.id);
   }
 
   loadProductDetail() {

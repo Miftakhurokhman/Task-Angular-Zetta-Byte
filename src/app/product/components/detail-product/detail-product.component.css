@@ -3,8 +3,8 @@
     width: 100%;
     border-radius: 15px; 
     display: flex;
-    background-color: rgb(249, 249, 249);
-    /* border: solid #93ff9f 1px; */
+    /* background-color: rgb(249, 249, 249); */
+    background-color: rgba(173, 199, 56, 0.05)
 }
 
 #idNotFound {
@@ -16,22 +16,6 @@
     justify-content: center;
     border-radius: 15px;
     background-color: rgb(249, 249, 249);
-}
-
-app-success-alert {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 6;
-}
-
-app-add-update-product {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
 }
 
 button {

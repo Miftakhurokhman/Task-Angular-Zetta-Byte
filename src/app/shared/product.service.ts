@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 })
 export class ProductService {
   private productListSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-
+  private choosedProduct: BehaviorSubject<string> = new BehaviorSubject<string>('');
   constructor() { 
     this.initializeProductList();
   }
@@ -80,6 +80,15 @@ export class ProductService {
 
     ]
     this.productListSubject.next(initialProductList);
+  }
+
+  getChoosedProduct(): Observable<string> {
+    return this.choosedProduct.asObservable();
+  }
+
+  sendChoosedProduct(id: string) {
+    this.choosedProduct.next(id);
+    console.log(this.choosedProduct)
   }
 
   getProducts(): Observable<any[]> {

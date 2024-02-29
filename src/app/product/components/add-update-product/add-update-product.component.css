@@ -1,10 +1,31 @@
 .boxForm {
-    width: 100vw;
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    /* min-height: 100vh; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+h3 {
+    color: #adc738;
+}
+
+#imgProduct {
+    border: solid 1px #adc738;
+    width: 80%;
+    border-radius: 15px;
+}
+
+.formInput {
+    height: 60vh;
+    overflow: hidden auto;
+}
+
+img {
+    width: 100%;
+    max-width: 350px;
 }
 
 .form-control:focus {
@@ -13,7 +34,9 @@
   }
 
 .form {
-    width: 700px;
+    display: flex;
+    align-items: center;
+    width: 80%;
     padding: 30px;
     background-color: white;
     border-radius: 15px;

@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListProductComponent } from './product/components/list-product/list-product.component';
 import { DetailProductComponent } from './product/components/detail-product/detail-product.component';
 import { PageNotFoundComponent } from './message/components/page-not-found/page-not-found.component';
+import { AddUpdateProductComponent } from './product/components/add-update-product/add-update-product.component';
 
 const appRoutes: Routes = [
   {
@@ -16,8 +17,12 @@ const appRoutes: Routes = [
     component: ListProductComponent
   },
   {
-    path: "detail/:id",
-    component: DetailProductComponent
+    path: "detail",
+    component: DetailProductComponent,
+  },
+  {
+    path: "form",
+    component: AddUpdateProductComponent,
   },
   {
     path: "**",

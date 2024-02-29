@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../../../shared/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-product',
@@ -15,7 +16,7 @@ export class ListProductComponent implements OnInit {
   addProduct: boolean = false;
   listProductIsEmpty: boolean = false;
 
-  constructor(private _productService: ProductService) {}
+  constructor(private _productService: ProductService, private router:Router) {}
 
   ngOnInit(): void {
     this._productService.getProducts().subscribe(data => {
@@ -24,8 +25,12 @@ export class ListProductComponent implements OnInit {
     });
   }
 
+  openDetailProduct(ID:string) {
+    this.router.navigateByUrl('/detail?id='+ ID);
+  }
+
   addingNewProduct () {
-    this.addProduct = true
+    this.router.navigateByUrl('/form?action=add');
   }
 
   newProductHasBeenAdded (productHasBeenAdded: boolean) {

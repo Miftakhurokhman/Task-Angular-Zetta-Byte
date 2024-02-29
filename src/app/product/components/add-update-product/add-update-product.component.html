@@ -1,43 +1,52 @@
 <div class="boxForm">
+    <h2 class="text-center my-3">Product Form</h2>
     <div class="form">
-        <h3 *ngIf="editProduct; else notEdit" class="text-center">
-            Edit your product information!!
-        </h3>
-        <ng-template #notEdit>
+        <div class="col-5">
+          <div *ngIf="editProduct; else notEdit" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <img id="imgProduct" [src]="productUpdated.image_url" alt="" srcset="">
             <h3 class="text-center">
-                Add your new product information!!
+                Edit your product information!!
             </h3>
-        </ng-template>
-        <br>
-        <form>
+          </div>
+          
+          
+          <ng-template #notEdit style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <img src="https://img.freepik.com/premium-vector/green-headphones-isolated-wite-contains-clipping-path_1035899-2423.jpg?w=900" alt="" srcset="">
+              <h3 class="text-center">
+                  Add your new product information!!
+              </h3>
+          </ng-template>
+        </div>
+        <div class="col-7 formInput px-2">
+          <form>
             <div class="mb-3">
               <label for="inputName" class="form-label">Input product name</label>
-              <input [(ngModel)]="nameInputed" type="text" class="form-control" id="inputName" name="inputName">
+              <input [(ngModel)]="productUpdated.name" type="text" class="form-control" id="inputName" name="inputName">
             </div>
             <div class="mb-3">
                 <label for="inputDesc" class="form-label">Input product description</label>
-                <input [(ngModel)]="descInputed" type="text" class="form-control" id="inputDesc" name="inputDesc">
+                <input [(ngModel)]="productUpdated.description" type="text" class="form-control" id="inputDesc" name="inputDesc">
               </div>
               
               <div class="mb-3">
                 <label for="inputType" class="form-label">Input product type</label>
-                <input [(ngModel)]="typeInputed" type="text" class="form-control" id="inputType" name="inputType">
+                <input [(ngModel)]="productUpdated.type" type="text" class="form-control" id="inputType" name="inputType">
               </div>
               <div class="mb-3">
                 <label for="inputImage" class="form-label">Input product image url</label>
-                <input [(ngModel)]="imageInputed" type="text" class="form-control" id="inputImage" name="inputImage">
+                <input [(ngModel)]="productUpdated.image_url" type="text" class="form-control" id="inputImage" name="inputImage">
               </div>
               <div class="row">
                 <div class="col">
                     <div class="mb-3">
                         <label for="inputPrice" class="form-label">Input product price</label>
-                        <input [(ngModel)]="priceInputed" type="number" class="form-control" id="inputPrice" name="inputPrice">
+                        <input [(ngModel)]="productUpdated.price" type="number" class="form-control" id="inputPrice" name="inputPrice">
                       </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label for="inputStock" class="form-label">Input product stock</label>
-                        <input [(ngModel)]="stockInputed" type="number" class="form-control" id="inputStock" name="inputStock">
+                        <input [(ngModel)]="productUpdated.stok" type="number" class="form-control" id="inputStock" name="inputStock">
                       </div>
                 </div>
               </div>
@@ -45,13 +54,18 @@
                 <div class="col">
                     <button (click)="cancelForm()" type="submit" class="btn btn-outline-danger w-100 d-flex justify-content-center">Cancel</button>
                 </div>
-                <div class="col">
-                    <button *ngIf="editProduct; else notedit" (click)="saveUpdate()" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Save</button>
-                    <ng-template #notedit>
-                        <button (click)="addingNewProduct()" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Submit</button>
-                    </ng-template>
+                <div *ngIf="editProduct; else notedit"  class="col">
+                    <button (click)="saveUpdate()" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Save</button>
                 </div>
+                <ng-template #notedit>
+                  <div class="col">
+                      <button (click)="addingNewProduct()" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Submit</button>
+                  </div>
+                </ng-template>
               </div>
           </form>
+        </div>
     </div>
 </div>
+
+<app-success-alert *ngIf="displayAlert" [message]="alertMessage"></app-success-alert>
