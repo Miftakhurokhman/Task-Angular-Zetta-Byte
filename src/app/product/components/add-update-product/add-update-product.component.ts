@@ -6,7 +6,7 @@ import { ProductService } from '../../../shared/product.service';
   templateUrl: './add-update-product.component.html',
   styleUrl: './add-update-product.component.css'
 })
-export class AddProductComponent implements OnInit, OnDestroy{
+export class AddUpdateProductComponent implements OnInit, OnDestroy{
   @Output() productHasBeenUpdated = new EventEmitter<(boolean)>();
   @Output() newProductHasBeenAdded = new EventEmitter<(boolean)>();
   @Output() cancelUpdate = new EventEmitter<(boolean)>();
@@ -78,7 +78,7 @@ export class AddProductComponent implements OnInit, OnDestroy{
     this.productUpdated.type = this.typeInputed;
     this._productService.updateProduct(this.productUpdated);
     this.productHasBeenUpdated.emit(true);
-    
+    // console.log("update berhasil");
   }
 
   addingNewProduct () {

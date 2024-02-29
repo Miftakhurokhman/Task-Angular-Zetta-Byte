@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SuccessAlertComponent } from './success-alert/success-alert.component';
+import { SuccessAlertComponent } from './components/success-alert/success-alert.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 
 @NgModule({
   declarations: [
-    SuccessAlertComponent
+    SuccessAlertComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    SuccessAlertComponent
+    SuccessAlertComponent,
+    PageNotFoundComponent
   ]
 })
 export class MessageModule { }

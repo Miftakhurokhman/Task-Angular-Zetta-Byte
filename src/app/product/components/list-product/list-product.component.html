@@ -1,4 +1,4 @@
-<div class="my-4 row w-100 d-flex align-items-center justify-content-between">
+<div class="mt-4 mb-3 row w-100 d-flex align-items-center justify-content-between">
     <div class="col">
         <h2>Select a product to view product details</h2>
     </div>
@@ -6,7 +6,6 @@
         <button (click)="addingNewProduct()" type="button" style="height: 60px;" class="btn btn-success">Add New Product</button>
     </div>
 </div>
-
 <div class="listCard d-flex justify-content-center">
     <div *ngIf="listProductIsEmpty; else listIsNotEmpty">
         <h2 class="text-center">
@@ -14,14 +13,14 @@
         </h2>
     </div>
     <ng-template #listIsNotEmpty>
-        <div *ngFor="let product of productList" class="column">
-            <div (click)="getChoosedCard(product.id)" class="card">
-                <div class="image" [style.backgroundImage]="'url(' + product.image_url + ')'" style="width: 100%; height: 12vw; background-size: cover;"></div>
-                <div class="card-body">
-                <p class="card-text">{{ product.name }}</p>
-                <h6>{{ "Rp. " + product.price }}</h6>
+        <div [routerLink]="['/detail', product.id]" *ngFor="let product of productList" class="column">
+            <div class="card">
+                    <div class="image" [style.backgroundImage]="'url(' + product.image_url + ')'" style="width: 100%; height: 12vw; background-size: cover;"></div>
+                    <div class="card-body">
+                    <p class="card-text">{{ product.name }}</p>
+                    <h6>{{ "Rp. " + product.price }}</h6>
+                    </div>
                 </div>
-            </div>
         </div>
     </ng-template>
     
@@ -29,4 +28,8 @@
 
 <div *ngIf="addProduct">
     <app-add-update-product (cancelAdd)="cancelAdd($event)" (newProductHasBeenAdded)="newProductHasBeenAdded($event)"></app-add-update-product>
+</div>
+
+<div *ngIf="alert.display">
+    <app-success-alert [message]="alert.message"></app-success-alert>
 </div>

@@ -7,9 +7,11 @@ import { ProductService } from '../../../shared/product.service';
   styleUrl: './list-product.component.css'
 })
 export class ListProductComponent implements OnInit {
-  @Output() choosedCard = new EventEmitter<(string)>();
-  @Output() addAlert = new EventEmitter<(string)>();
   public productList: any[] = [];
+  alert = {
+    display : false,
+    message : ""
+  }
   addProduct: boolean = false;
   listProductIsEmpty: boolean = false;
 
@@ -22,17 +24,17 @@ export class ListProductComponent implements OnInit {
     });
   }
 
-  getChoosedCard(id: string) {
-    this.choosedCard.emit(id);
-  }
-
   addingNewProduct () {
     this.addProduct = true
   }
 
   newProductHasBeenAdded (productHasBeenAdded: boolean) {
     this.addProduct = !productHasBeenAdded;
-    this.addAlert.emit("added")
+    this.alert.message = "added"
+    this.alert.display = true;
+    setTimeout(() => {
+      this.alert.display = false
+    }, 2500);
   }
 
   cancelAdd(cancel_add: boolean) {
