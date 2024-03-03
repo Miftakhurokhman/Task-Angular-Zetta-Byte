@@ -1,0 +1,69 @@
+<div id="listCustomers">
+  <h2 class="my-3 text-center">List of Customers</h2>
+  <div id="boxTable">
+    <div id="tableHead" class="d-flex">
+      <div class="col-1">
+        <h6 class="text-center">
+          No.
+        </h6>
+      </div>
+      <div class="col-3">
+        <h6 class="text-center">
+          Name
+        </h6>
+      </div>
+      <div class="col-2">
+        <h6 class="text-center">
+          Email
+        </h6>
+      </div>
+      <div class="col-2">
+        <h6 class="text-center">
+          Gender
+        </h6>
+      </div>
+      <div class="col-4">
+        <h6 class="text-center">
+          Action
+        </h6>
+      </div>
+    </div>
+    <div id="boxList">
+      <div *ngFor="let customer of customerList; let number = index" class="listCustomer my-2 d-flex">
+        <div class="col-1 customerField">
+          <h6 class="text-center">
+            {{ number+1 }}.
+          </h6>
+        </div>
+        <div class="col-3 d-flex" style="align-items: center;">
+          <div class="profileImage me-2" [style.background-image]="'url(' + customer.profileImage + ')'"></div>
+          <div>
+            <h6>{{ customer.name }}</h6>
+            <p class="text-secondary">{{ "id : " + customer.id }}</p>
+          </div>
+        </div>
+        <div class="col-2 customerField">
+          <h6 class="text-center">
+            {{ customer.email }}
+          </h6>
+        </div>
+        <div class="col-2 customerField">
+          <h6 class="text-center">
+            {{ customer.gender }}
+          </h6>
+        </div>
+        <div class="col-4 customerField">
+          <button (click)="openDetailCustomer(customer.id)" type="button" class="m-2 btn btn-outline-primary">
+            <h6 class="text-center">View in Detail</h6>
+          </button>
+          <button (click)="editCustomer(customer.id)" type="button" class="m-2 btn btn-outline-warning">
+            <h6 class="text-center">Edit Customer</h6>
+          </button>
+          <button (click)="deleteCustomer(customer.id)" type="button" class="m-2 btn btn-outline-danger">
+            <h6 class="text-center">Delete Customer</h6>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

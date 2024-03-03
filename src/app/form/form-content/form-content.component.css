@@ -1,0 +1,66 @@
+.boxForm {
+    width: 100%;
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    align-items: center;
+}
+
+
+h1 {
+    font-size: 40px;
+}
+
+#profileImage {
+    border-radius: 5px;
+    border: solid 3px white;
+    width: 15vw;
+    height: 20vw;
+    background-size: cover;
+}
+
+/* #imgProduct {
+    border: solid 1px #adc738;
+    width: 80%;
+    border-radius: 15px;
+} */
+
+.formInput {
+    padding: 29px;
+    background-color: white;
+    border-radius: 14px;
+}
+
+form {
+    padding: 29px;
+    height: 60vh;
+    overflow: hidden auto;
+}
+
+img {
+    width: 100%;
+    max-width: 350px;
+}
+
+.titleForm {
+    padding: 29px;
+}
+
+.form {
+    /* display: flex;
+    align-items: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    border: solid #71f280 1px; */
+    width: 100%;
+    background-color: rgba(13, 109, 253, 0.1);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    border-radius: 15px;
+}

@@ -1,0 +1,14 @@
+.boxDashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#dashboard {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}

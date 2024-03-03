@@ -1,0 +1,85 @@
+<h2 class="text-center my-3">Detail of Customer</h2>
+<div id="boxDetail">
+    <div class="col-12 col-md-4" style="padding: 14px; align-items: center; display: flex; flex-direction: column;">
+        <div id="profilePhoto" [style.background-image]="'url('+ detailCustomerInformation.profileImage +')'">
+        </div>
+        <br>
+        <h4 class="p-0 m-0">{{ detailCustomerInformation.name }}</h4>
+        <h6>{{ "ID : " + detailCustomerInformation.id }}</h6>
+        <br>
+        <div class="row w-100">
+            <div class="col">
+                <button (click)="editCustomerInformation()" type="button" class="w-100 btn btn-outline-warning d-flex justify-content-center m-1">
+                    <h6 class="text-center">Edit</h6>
+                </button>
+            </div>
+            <div (click)="deleteCustomer()" class="col">
+                <button type="button" class="w-100 btn btn-outline-danger d-flex justify-content-center m-1">
+                    <h6 class="text-center">Delete</h6>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-8 bg-white" style="padding: 39px; border-radius: 14px; height: 100%;">
+        <h3 class="text-end">Main Information</h3>
+        <br>
+        <div class="row">
+            <div class="col">
+                <h6>Name</h6>
+                <p class="ms-3">{{ detailCustomerInformation.name }}</p>
+                <br>
+                <h6>Gender</h6>
+                <p class="ms-3">{{ detailCustomerInformation.gender }}</p>
+                <br>
+                <h6>Email</h6>
+                <p class="ms-3">{{ detailCustomerInformation.email }}</p>
+            </div>
+            <div class="col">
+                <h6>Date of Birth</h6>
+                <p class="ms-3">{{detailCustomerInformation.birthPlace + ", " + detailCustomerInformation.dateOfBirth }}</p>
+                <br>
+                <h6>Mother Name</h6>
+                <p class="ms-3">{{ detailCustomerInformation.motherName }}</p>
+            </div>
+        </div>
+        <br>
+        <h3 class="text-end">Addresses</h3>
+        <br>
+        <h6>Main Address</h6>
+        <div class="ms-3">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-3">
+                    <p>Full Address</p>
+                </div>
+                <div class="col-1">
+                    <p class="text-center">:</p>
+                </div>
+                <div class="col">
+                    <p>{{ detailCustomerInformation.address.fullAddress }}</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-3">
+                    <p>City</p>
+                </div>
+                <div class="col-1">
+                    <p class="text-center">:</p>
+                </div>
+                <div class="col">
+                    <p>{{ detailCustomerInformation.address.city }}</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-3">
+                    <p>Zip Code</p>
+                </div>
+                <div class="col-1">
+                    <p class="text-center">:</p>
+                </div>
+                <div class="col">
+                    <p>{{ detailCustomerInformation.address.zipCode }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

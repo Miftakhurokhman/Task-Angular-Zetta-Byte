@@ -1,0 +1,23 @@
+#boxDetail {
+    background-color: rgba(13, 109, 253, 0.1);
+    padding: 1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#profilePhoto {
+    min-width: 120px;
+    min-height: 120px;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 100%;
+    border: solid 3px white;
+    background-size: cover;
+}
+
+h6,p {
+    padding: 0;
+    margin: 0;
+}
