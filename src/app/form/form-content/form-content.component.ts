@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../../shared/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './form-content.component.html',
   styleUrls: ['./form-content.component.css']
 })
-export class FormContentComponent implements OnInit {
+export class FormContentComponent implements OnInit, OnDestroy {
   reactiveForm: FormGroup;
   customerInformation: any;
   action = {
@@ -35,6 +35,14 @@ export class FormContentComponent implements OnInit {
         this.buildForm();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.customerInformation = "";
+    this.action = {
+      name: "",
+      id: "",
+    }
   }
 
   buildForm() {

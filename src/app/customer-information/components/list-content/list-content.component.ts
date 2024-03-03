@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CustomerService } from '../../../shared/customer.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './list-content.component.html',
   styleUrl: './list-content.component.css'
 })
-export class ListContentComponent implements OnInit {
+export class ListContentComponent implements OnInit, OnDestroy {
   customerList = [];
 
   constructor(private _customerService: CustomerService, private router: Router){}
@@ -15,8 +15,11 @@ export class ListContentComponent implements OnInit {
   ngOnInit(): void {
     this._customerService.getAllCustomers().subscribe(data => {
       this.customerList = data;
-      //this.listProductIsEmpty = this.productList.length === 0; 
     });
+  }
+
+  ngOnDestroy(): void {
+      this.customerList = []
   }
 
   openDetailCustomer(customerID: string) {

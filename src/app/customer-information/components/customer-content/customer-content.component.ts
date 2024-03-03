@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CustomerService } from '../../../shared/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './customer-content.component.html',
   styleUrl: './customer-content.component.css'
 })
-export class CustomerContentComponent implements OnInit {
+export class CustomerContentComponent implements OnInit, OnDestroy {
 
   detailCustomerInformation: any;
   constructor(private _customerService: CustomerService, private activatedRoute: ActivatedRoute, private router:Router) {  }
@@ -20,6 +20,10 @@ export class CustomerContentComponent implements OnInit {
         }
       );
       })
+  }
+
+  ngOnDestroy(): void {
+      this.detailCustomerInformation = {}
   }
 
   editCustomerInformation() {
