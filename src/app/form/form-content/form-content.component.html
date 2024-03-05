@@ -1,101 +1,139 @@
 <div class="boxForm">
-  <div class="form">
-      <div class="col-4 titleForm">
+  <div class="form row">
+      <div class="col-12 col-md-4 titleForm">
           <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <h2 *ngIf="action.name=='add'; else action_update" style="color: #0D6EFD;">
                 Add new customer
             </h2>
             <ng-template #action_update>
-              <!-- <div id="profileImage" [style.background-image]="'url('+ customerInformation.profileImage +')'"></div> -->
               <h2 style="color: #0D6EFD;">Update Customer Information</h2>
-              <!-- </div>
-              <img id="profileImage" [src]="customerInformation.profileImage" alt="" srcset=""> -->
             </ng-template>
           </div>
       </div>
-      <div class="col-8 formInput px-2">
+      <div class="col-12 col-md-8 formInput px-2">
         <form [formGroup]="reactiveForm">
-          <h3 class="text-center my-2">Basic information</h3>
-          <div class="mb-3">
-            <label for="inputName" class="form-label">Input name</label>
-            <input formControlName="name" type="text" class="form-control" id="inputName" name="inputName">
-            <div *ngIf="reactiveForm.get('name').invalid" class="form-text text-danger">The input name field is required</div>
-          </div>
-          <div class="mb-3">
-            <label for="inputGender" class="form-label">Input gender</label>
-            <select class="form-select" style="width: 100%;" id="inputGender" name="gender" formControlName="gender">
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-            <div *ngIf="reactiveForm.get('gender').invalid" class="form-text text-danger">The input gender field is required</div>
-          </div>
-          <div class="row">
+          <div *ngIf="openMainForm; else openAddressForm">
+            <h3 class="text-center my-2">Basic information</h3>
+            <div class="mb-3">
+              <label for="inputName" class="form-label">Input name</label>
+              <input formControlName="name" type="text" class="form-control" id="inputName" name="inputName">
+              <div *ngIf="reactiveForm.get('name').invalid" class="form-text text-danger">The input name field is required</div>
+            </div>
+            <div class="mb-3">
+              <label for="inputGender" class="form-label">Input gender</label>
+              <select class="form-select" style="width: 100%;" id="inputGender" name="gender" formControlName="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <div *ngIf="reactiveForm.get('gender').invalid" class="form-text text-danger">The input gender field is required</div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                <label for="inputBirthPlace" class="form-label">Input birth place</label>
+                <input  formControlName="birthPlace" type="text" class="form-control" id="inputBirthPlace" name="inputBirthPlace">
+              <div *ngIf="reactiveForm.get('birthPlace').invalid" class="form-text text-danger">The input birth place field is required</div>
+              </div>
               <div class="col mb-3">
-              <label for="inputBirthPlace" class="form-label">Input birth place</label>
-              <input  formControlName="birthPlace" type="text" class="form-control" id="inputBirthPlace" name="inputBirthPlace">
-            <div *ngIf="reactiveForm.get('birthPlace').invalid" class="form-text text-danger">The input birth place field is required</div>
+                <label for="inputType" class="form-label">Input date of birth</label>
+                <input formControlName="dateOfBirth" type="date" class="form-control" id="inputType" name="inputType">
+                <div *ngIf="reactiveForm.get('dateOfBirth').invalid" class="form-text text-danger">The input date of birth field is required</div>
+              </div>
             </div>
-            <div class="col mb-3">
-              <label for="inputType" class="form-label">Input date of birth</label>
-              <input formControlName="dateOfBirth" type="date" class="form-control" id="inputType" name="inputType">
-              <div *ngIf="reactiveForm.get('dateOfBirth').invalid" class="form-text text-danger">The input date of birth field is required</div>
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">Input email</label>
+                <input  formControlName="email" type="text" class="form-control" id="inputEmail" name="inputEmail">
+                <div *ngIf="reactiveForm.get('email').invalid" class="form-text text-danger">The input email field is required and according to the format</div>
             </div>
-          </div>
-          
-          <div class="mb-3">
-              <label for="inputEmail" class="form-label">Input email</label>
-              <input  formControlName="email" type="text" class="form-control" id="inputEmail" name="inputEmail">
-              <div *ngIf="reactiveForm.get('email').invalid" class="form-text text-danger">The input email field is required and according to the format</div>
-            </div>
-
             <div class="mb-3">
               <label for="inputImage" class="form-label">Input url profile image</label>
               <input  formControlName="profileImage" type="text" class="form-control" id="inputImage" name="inputImage">
               <div *ngIf="reactiveForm.get('profileImage').invalid" class="form-text text-danger">The input url profile image field is required</div>
             </div>
-            
             <div class="mb-3">
               <label for="inputMotherName" class="form-label">Input mother name</label>
               <input  formControlName="motherName" type="text" class="form-control" id="inputMotherName" name="inputMotherName">
               <div *ngIf="reactiveForm.get('motherName').invalid" class="form-text text-danger">The input mother name field is required</div>
             </div>
-
-            <div class="formAddress" formGroupName="address">
-
+          </div>
+          <ng-template #openAddressForm>
+            <div class="formAddress" formArrayName="addresses">
               <h3 class="text-center my-2">Address Information</h3>
-              <div class="mb-3">
-                    <label for="inputFullAddress" class="form-label">Input full address</label>
-                    <input  formControlName="fullAddress" type="text" class="form-control" id="inputFullAddress" name="inputFullAddress">
-                    <div *ngIf="reactiveForm.get('address.fullAddress').invalid" class="form-text text-danger">The input full address field is required</div>
+              <div *ngFor="let address of addressesArray.controls; let x = index">
+                <br>
+                <div [formGroupName]="x">
+                  <h4 *ngIf="x===0; else notMainAddress">Main Address</h4>
+                  <ng-template #notMainAddress>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <h4>Address {{ x+1 }}</h4>
+                      <button (click)="deleteAddress(x)" type="submit" class="btn p-2 btn-danger d-flex justify-content-center"><h6 class="p-0 m-0">Delete Address</h6></button>
+                    </div>
+                  </ng-template>
+                  <div class="mb-3">
+                    <label for="'inputFullAddress'+x" class="form-label">Input full address</label>
+                    <input formControlName="fullAddress" type="text" class="form-control" [id]="'inputFullAddress'+x" [name]="'inputFullAddress'+x">
+                    <div *ngIf="addressesArray.controls[x].get('fullAddress').invalid" class="form-text text-danger">The input full address field is required</div>
                   </div>
-              <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="inputCity" class="form-label">Input city</label>
-                        <input  formControlName="city" type="text" class="form-control" id="inputCity" name="inputCity">
-                        <div *ngIf="reactiveForm.get('address.city').invalid" class="form-text text-danger">The input city field is required</div>
+                  <div class="mb-3">
+                    <label for="'inputCountry'+x" class="form-label">Input country</label>
+                    <input formControlName="country" type="text" class="form-control" [id]="'inputCountry'+x" [name]="'inputCountry'+x">
+                    <div *ngIf="addressesArray.controls[x].get('country').invalid" class="form-text text-danger">The input country field is required</div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="'inputCity'+x" class="form-label">Input city</label>
+                        <input formControlName="city" type="text" class="form-control" [id]="'inputCity'+x" [name]="'inputCity'+x">
+                        <div *ngIf="addressesArray.controls[x].get('city').invalid" class="form-text text-danger">The input city field is required</div>
                       </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label [for]="'inputZipCode'+x" class="form-label">Input zip code</label>
+                            <input  formControlName="zipCode" type="text" class="form-control" [id]="'inputZipCode'+x" [name]="'inputZipCode'+x">
+                            <div *ngIf="addressesArray.controls[x].get('zipCode').invalid" class="form-text text-danger">The input zip code field is required</div>
+                          </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="inputZipCode" class="form-label">Input zip code</label>
-                        <input  formControlName="zipCode" type="text" class="form-control" id="inputZipCode" name="inputZipCode">
-                        <div *ngIf="reactiveForm.get('address.zipCode').invalid" class="form-text text-danger">The input zip code field is required</div>
-                      </div>
-                </div>
+              </div>
+              <div class="d-flex" style="flex-direction: row-reverse;">
+                <button type="button" style="border: none; " (click)="addNewAddress()" class="btnAddCustomer p-1 rounded-2 d-flex align-items-center justify-content-center">
+                  <div class="bg-primary d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; border-radius: 100%;">
+                    <h4 class="m-0 p-0 pb-1 text-white">+</h4>
+                  </div>
+                  <div class="ms-1 text-primary">
+                    <h6 class="text-start m-0 p-0">New</h6>
+                    <h6 class="text-start m-0 p-0">Address</h6>
+                  </div>
+                </button>
               </div>
             </div>
+          </ng-template>
+
+          <br>
+          <div *ngIf="openMainForm; else OpenAddressForm" class="row mx-5">
+            <div class="col">
+                <button (click)="cancelForm()" type="submit" class="btn btn-outline-danger w-100 d-flex justify-content-center">Cancel</button>
+            </div>
+            <div class="col">
+                <button [disabled]="!reactiveForm.get('name').valid || !reactiveForm.get('gender').valid || !reactiveForm.get('birthPlace').valid || !reactiveForm.get('dateOfBirth').valid || !reactiveForm.get('email').valid ||  !reactiveForm.get('profileImage').valid || !reactiveForm.get('motherName').valid"
+                (click)="openFormAddress()"
+                type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Next</button>
+            </div>
+          </div>
+          <ng-template #OpenAddressForm>
             <div class="row mx-5">
               <div class="col">
-                  <button (click)="cancelForm()" type="submit" class="btn btn-outline-danger w-100 d-flex justify-content-center">Cancel</button>
+                  <button (click)="backToMainForm()" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Back</button>
               </div>
               <div class="col">
-                  <button *ngIf="action.name == 'add'; else actionUpdate" (click)="submitForm($event)" [disabled]="!reactiveForm.valid" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Submit</button>
-                  <ng-template #actionUpdate>
+                  <button *ngIf="action.name === 'add'; else updateAction" (click)="submitForm($event)" [disabled]="!reactiveForm.valid" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Submit</button>
+                  <ng-template #updateAction>
                     <button (click)="saveForm($event)" [disabled]="!reactiveForm.valid" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Save</button>
                   </ng-template>
               </div>
             </div>
+          </ng-template>
         </form>
       </div>
   </div>

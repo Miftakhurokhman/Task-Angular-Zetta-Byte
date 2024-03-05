@@ -29,7 +29,7 @@
       </div>
     </div>
     <div id="boxList">
-      <div *ngFor="let customer of customerList; let number = index" class="listCustomer my-2 d-flex">
+      <div (click)="openDetailCustomer(customer.id)" *ngFor="let customer of customerList; let number = index" class="listCustomer my-2 d-flex">
         <div class="col-1 customerField">
           <h6 class="text-center">
             {{ number+1 }}.

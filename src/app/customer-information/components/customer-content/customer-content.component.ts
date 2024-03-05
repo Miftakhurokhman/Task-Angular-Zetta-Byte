@@ -16,7 +16,7 @@ export class CustomerContentComponent implements OnInit, OnDestroy {
       this.activatedRoute.queryParams.subscribe(params => {
         this._customerService.getCustomer(params['id']).subscribe( data => { 
           this.detailCustomerInformation = data;
-          console.log(this.detailCustomerInformation);
+          //console.log(this.detailCustomerInformation);
         }
       );
       })

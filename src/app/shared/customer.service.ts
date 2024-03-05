@@ -22,11 +22,20 @@ export class CustomerService {
         birthPlace : "Kebumen",
         profileImage : "https://i.pinimg.com/736x/07/33/ba/0733ba760b29378474dea0fdbcb97107.jpg",
         motherName : "Alexandra",
-        address: {
+        addresses: [
+          {
           fullAddress : "adas",
+          country : "England",
           city : "London",
           zipCode: "adasa"
-        }
+          },
+          {
+          fullAddress : "asdadawdaw",
+          country : "Indonesia",
+          city : "Kebumen",
+          zipCode: "12342"
+          }
+        ]
       },
       {
         id : "asdasd",
@@ -37,11 +46,14 @@ export class CustomerService {
         birthPlace : "Kebumen",
         profileImage : "https://i.pinimg.com/736x/07/33/ba/0733ba760b29378474dea0fdbcb97107.jpg",
         motherName : "Alexandra",
-        address: {
+        addresses: [
+          {
           fullAddress : "adas",
+          country : "England",
           city : "London",
           zipCode: "adasa"
-        }
+          }
+        ]
       },
       {
         id : "frrsr",
@@ -52,11 +64,14 @@ export class CustomerService {
         birthPlace : "Kebumen",
         profileImage : "https://i.pinimg.com/736x/07/33/ba/0733ba760b29378474dea0fdbcb97107.jpg",
         motherName : "Alexandra",
-        address: {
+        addresses: [
+          {
           fullAddress : "adas",
+          country : "England",
           city : "London",
           zipCode: "adasa"
-        }
+          }
+        ]
       },
       {
         id : "fsrsd",
@@ -67,11 +82,14 @@ export class CustomerService {
         birthPlace : "Kebumen",
         profileImage : "https://i.pinimg.com/736x/07/33/ba/0733ba760b29378474dea0fdbcb97107.jpg",
         motherName : "Alexandra",
-        address: {
+        addresses: [
+          {
           fullAddress : "adas",
+          country : "England",
           city : "London",
           zipCode: "adasa"
-        }
+          }
+        ]
       }
     ]
     this.CustomerListSubject.next(initialCustomerList);

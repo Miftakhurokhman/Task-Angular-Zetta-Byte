@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../../shared/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FormContentComponent implements OnInit, OnDestroy {
   reactiveForm: FormGroup;
   customerInformation: any;
+  openMainForm : boolean = true;
   action = {
     name: "",
     id: "",
@@ -47,6 +48,7 @@ export class FormContentComponent implements OnInit, OnDestroy {
 
   buildForm() {
     if (this.action.name == "add") {
+      //console.log(this.action.name)
       this.reactiveForm = new FormGroup({
         'id': new FormControl(null),
         'name': new FormControl(null, [Validators.required]),
@@ -56,11 +58,14 @@ export class FormContentComponent implements OnInit, OnDestroy {
         'dateOfBirth': new FormControl(null, Validators.required),
         'profileImage': new FormControl(null, [Validators.required]),
         'motherName': new FormControl(null, [Validators.required]),
-        'address' : new FormGroup({
-          'fullAddress': new FormControl(null, [Validators.required]),
-          'city': new FormControl(null, [Validators.required]),
-          'zipCode': new FormControl(null, [Validators.required])
-        })
+        'addresses' : new FormArray([
+            new FormGroup({
+            'fullAddress': new FormControl(null, [Validators.required]),
+            'country': new FormControl(null, [Validators.required]),
+            'city': new FormControl(null, [Validators.required]),
+            'zipCode': new FormControl(null, [Validators.required])
+          })
+        ])
       });
     } else if (this.action.name == "update") {
       this.reactiveForm = new FormGroup({
@@ -72,13 +77,37 @@ export class FormContentComponent implements OnInit, OnDestroy {
         'dateOfBirth': new FormControl(this.customerInformation.dateOfBirth, Validators.required),
         'profileImage': new FormControl(this.customerInformation.profileImage, [Validators.required]),
         'motherName': new FormControl(this.customerInformation.motherName, [Validators.required]),
-        'address' : new FormGroup({
-          'fullAddress': new FormControl(this.customerInformation.address.fullAddress, [Validators.required]),
-          'city': new FormControl(this.customerInformation.address.city, [Validators.required]),
-          'zipCode': new FormControl(this.customerInformation.address.zipCode, [Validators.required])
-        })
+        'addresses' : new FormArray([])
+      });
+      this.customerInformation.addresses.forEach(address => {
+        const formAddress = new FormGroup({
+          'fullAddress': new FormControl(address.fullAddress, [Validators.required]),
+          'country': new FormControl(address.country, [Validators.required]),
+          'city': new FormControl(address.city, [Validators.required]),
+          'zipCode': new FormControl(address.zipCode, [Validators.required])
+        });
+        this.addressesArray.push(formAddress)
       });
     }
+  }
+
+  get addressesArray() {
+    return this.reactiveForm.get('addresses') as FormArray;
+  }
+
+  addNewAddress() {
+    const formAddress = new FormGroup({
+      'fullAddress': new FormControl(null, [Validators.required]),
+      'country': new FormControl(null, [Validators.required]),
+      'city': new FormControl(null, [Validators.required]),
+      'zipCode': new FormControl(null, [Validators.required])
+    });
+    this.addressesArray.push(formAddress)
+    console.log(this.addressesArray)
+  }
+
+  deleteAddress(index: number) {
+    this.addressesArray.removeAt(index)
   }
 
   submitForm(event: Event) {
@@ -113,5 +142,13 @@ export class FormContentComponent implements OnInit, OnDestroy {
     } else if (this.action.name == "update") {
       this.router.navigateByUrl("list-customer/detail?id="+this.customerInformation.id);
     }
+  }
+
+  openFormAddress() {
+    this.openMainForm = false;
+  }
+
+  backToMainForm() {
+    this.openMainForm = true;
   }
 }

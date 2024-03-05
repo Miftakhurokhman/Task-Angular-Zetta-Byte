@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.btnAddCustomer:hover {
+    background-color: #E0EBFB;
+}
+
 
 h1 {
     font-size: 40px;
@@ -37,7 +41,7 @@ h1 {
 form {
     padding: 29px;
     height: 60vh;
-    overflow: hidden auto;
+    overflow-y: scroll;
 }
 
 img {
@@ -50,12 +54,6 @@ img {
 }
 
 .form {
-    /* display: flex;
-    align-items: center;
-    padding: 30px;
-    background-color: white;
-    border-radius: 15px;
-    border: solid #71f280 1px; */
     width: 100%;
     background-color: rgba(13, 109, 253, 0.1);;
     display: flex;

@@ -6,10 +6,6 @@ const routes: Routes = [
     path: "",
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
-  // {
-  //   path: "list",
-  //   loadChildren: () => import('./customer-information/customer-information.module').then(m => m.CustomerInformationModule)
-  // },
   {
     path: "list-customer",
     loadChildren: () => import('./customer-information/customer-information.module').then(m => m.CustomerInformationModule)
@@ -17,6 +13,10 @@ const routes: Routes = [
   {
     path: "form",
     loadChildren: () => import('./form/form.module').then(m => m.FormModule)
+  }, 
+  {
+    path: "**",
+    loadChildren: () => import('./message/message.module').then(m => m.MessageModule)
   }
 ];
 

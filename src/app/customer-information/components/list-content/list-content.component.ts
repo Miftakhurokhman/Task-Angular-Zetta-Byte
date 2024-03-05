@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './list-content.component.css'
 })
 export class ListContentComponent implements OnInit, OnDestroy {
+  listIsEmpty: boolean = false;
   customerList = [];
 
   constructor(private _customerService: CustomerService, private router: Router){}
@@ -15,6 +16,7 @@ export class ListContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this._customerService.getAllCustomers().subscribe(data => {
       this.customerList = data;
+      this.listIsEmpty = this.customerList.length === 0;
     });
   }
 
