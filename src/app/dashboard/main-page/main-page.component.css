@@ -1,0 +1,9 @@
+.title {
+    width: 100vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h2 {
+    color: #001838;
+    font-weight: bold;
+}

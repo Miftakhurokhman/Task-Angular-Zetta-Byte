@@ -1,0 +1,41 @@
+<div class="title py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <h2 class="m-0 p-0 py-3">PLAYERS</h2>
+        <form role="search">
+            <input [(ngModel)]="search" (input)="searchPlayer()" name="search" class="form-control me-2" style="height: 40px;" type="search" placeholder="Search player">
+          </form>
+    </div>
+</div>
+<div *ngIf="search != ''; else empty" class="container">
+    <br>
+    <app-list-player></app-list-player>
+    <!-- <app-list-player [players]="allPlayers | search: search"></app-list-player> -->
+</div>
+<ng-template #empty>
+    <br>
+    <div class="container">
+        <h2 class="m-0 p-0">Keeper</h2>
+        <app-list-player playerPosition="Keeper"></app-list-player>
+    </div>
+    <br>
+    <div class="container">
+        <h2 class="m-0 p-0">Defender</h2>
+        <app-list-player playerPosition="Defender"></app-list-player>
+    </div>
+    <br>
+    <div class="container">
+        <h2 class="m-0 p-0">Midfilder</h2>
+        <app-list-player playerPosition="Midfilder"></app-list-player>
+    </div>
+    <br>
+    <div class="container">
+        <h2 class="m-0 p-0">Forward</h2>
+        <app-list-player playerPosition="Foward"></app-list-player>
+    </div>
+    <br>
+    <div class="container">
+        <h2 class="m-0 p-0">Official</h2>
+        <app-list-player playerPosition="Official"></app-list-player>
+    </div>
+</ng-template>

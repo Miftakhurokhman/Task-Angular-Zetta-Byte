@@ -1,0 +1,58 @@
+<div class="banner">
+    <div class="d-flex align-items-center">
+        <!-- <h1 class="number m-0 p-0" >#33</h1> -->
+        <img [src]="playerInformation.profileImage" alt="player photo" srcset="">
+        <p class="name m-0 p-0">{{ playerInformation.name }}</p>
+        </div>
+</div>
+<div class="description">
+    <div class="title">
+        <div class="container">
+            <h2 class="m-0 p-0 py-3 text-center">DETAIL PLAYER</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-12 col-md-5">
+                <h2 class="p-0 m-0 text-center my-2">Bio</h2>
+                <p class="m-0 p-0 text-secondary">
+                    Joining date
+                </p>
+                <h3 class="m-0 p-0">{{ playerInformation.joiningDate | date: 'd MMMM yyyy' }}</h3>
+                <br>
+                <p class="m-0 p-0 text-secondary">
+                    Date of birth
+                </p>
+                <h3 class="m-0 p-0">{{ (playerInformation.birthPlace | uppercase) +', '+ (playerInformation.dateOfBirth | date: 'd MMMM yyyy') }}</h3>
+                <br>
+                <p class="m-0 p-0 text-secondary">
+                    Position
+                </p>
+                <h3 class="m-0 p-0">{{ playerInformation.position | uppercase }}</h3>
+                <br>
+                <p class="m-0 p-0 text-secondary">
+                    Nationality
+                </p>
+                <h3 class="m-0 p-0">{{ playerInformation.nationality | uppercase }}</h3>
+                <br>
+                <p class="m-0 p-0 text-secondary">
+                    Achievements
+                </p>
+                <h3 *ngIf="playerInformation.achievements.length == 0; else notNull" class="m-0 p-0">-</h3>
+                <ng-template #notNull>
+                    <h3 *ngFor="let achievement of playerInformation.achievements" class="m-0 p-0">{{ (achievement.year | date: 'd MMMM yyyy') + ' : '+ (achievement.name | lowercase) }}</h3>
+                </ng-template>
+            </div>
+            <div class="col-12 col-md-7">
+                <h2 class="p-0 m-0 text-center my-2">Info</h2>
+                <p>{{ playerInformation.description }}</p>
+                <br>
+                <div class="row mx-5">
+                    <div class="col">
+                        <button (click)="editPlayer()" type="submit" class="btn btn-outline-warning w-100 d-flex justify-content-center">Edit Player</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

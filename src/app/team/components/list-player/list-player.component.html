@@ -1,0 +1,11 @@
+<div id="listPlayer">
+    <div (click)="detailPlayer(player.id)" *ngFor="let player of (ListPlayer | search) | async" class="card m-2">
+        <div class="image" [style.background-image]="'url('+ player.profileImage +')'" style="background-image: url('https://www.mancity.com/meta/media/ejhjw1j4/scott-carson.png?width=376&quality=100')">
+        </div>
+        <div class="name">
+            <h2 class="m-0 p-0" style="font-weight: bold;">
+                {{ player.name }}
+            </h2>
+        </div>
+    </div>
+</div>

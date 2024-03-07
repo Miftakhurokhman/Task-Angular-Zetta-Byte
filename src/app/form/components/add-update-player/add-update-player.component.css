@@ -1,0 +1,30 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+
+}
+
+.title {
+    color: #38D6FF;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    padding: 0px 20px;
+    position: relative;
+    border-radius: 5px;
+    background-color: #001838;
+    top: 30px;
+}
+
+.boxForm {
+    border-radius: 15px;
+    border: solid 3px #001838;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+    padding: 30px;
+    width: 100%;
+}

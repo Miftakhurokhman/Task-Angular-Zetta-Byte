@@ -1,0 +1,121 @@
+<!-- <div class="background">
+</div> -->
+<div class="container d-flex align-items-center" style="flex-direction: column;">
+    <div class="title">
+        <h2 *ngIf="action.name=='add'; else actionUpdate" class="m-0 p-0" style="font-weight: bold;">
+            Add Player
+        </h2>
+        <ng-template #actionUpdate>
+            <h2 class="m-0 p-0" style="font-weight: bold;">
+                Update Player
+            </h2>  
+        </ng-template>
+    </div>
+    <div class="boxForm">
+        <form [formGroup]="reactiveForm">
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Input name</label>
+                <input formControlName="name" type="text" class="form-control" id="inputName" name="inputName">
+                <div *ngIf="validation[0]" class="form-text text-danger">The input name field is required</div>
+              </div>
+              <div class="row">
+                <div class="col mb-3">
+                    <label for="inputPosition" class="form-label">Input position</label>
+                    <select class="form-select" style="width: 100%;" id="inputPosition" name="position" formControlName="position">
+                      <option value="Keeper">Keeper</option>
+                      <option value="Defender">Defender</option>
+                      <option value="Midfilder">Midfilder</option>
+                      <option value="Foward">Foward</option>
+                      <option value="Official">Official</option>
+                    </select>
+                    <div *ngIf="validation[1]" class="form-text text-danger">The input position field is required</div>
+                </div>
+                <div class="col mb-3">
+                    <label for="inputJoiningDate" class="form-label">Input joining date</label>
+                    <input  formControlName="joiningDate" type="date" class="form-control" id="inputJoiningDate" name="inputJoiningDate">
+                    <div *ngIf="validation[2]" class="form-text text-danger">The input joining date is required</div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col mb-3">
+                  <label for="inputBirthPlace" class="form-label">Input birth place</label>
+                  <input  formControlName="birthPlace" type="text" class="form-control" id="inputBirthPlace" name="inputBirthPlace">
+                <div *ngIf="validation[3]" class="form-text text-danger">The input birth place field is required</div>
+                </div>
+                <div class="col mb-3">
+                  <label for="inputType" class="form-label">Input date of birth</label>
+                  <input formControlName="dateOfBirth" type="date" class="form-control" id="inputType" name="inputType">
+                  <div *ngIf="validation[4]" class="form-text text-danger">The input date of birth field is required</div>
+                </div>
+              </div>
+              <div class="mb-3">
+                  <label for="inputNationality" class="form-label">Input nationality</label>
+                  <input  formControlName="nationality" type="text" class="form-control" id="inputNationality" name="inputNationality">
+                  <div *ngIf="validation[5]" class="form-text text-danger">The input nationality is required</div>
+              </div>
+              <div class="mb-3">
+                <label for="inputImage" class="form-label">Input url profile image</label>
+                <input  formControlName="profileImage" type="text" class="form-control" id="inputImage" name="inputImage">
+                <div *ngIf="validation[6]" class="form-text text-danger">The input url profile image field is required</div>
+              </div>
+              <div class="mb-3">
+                <label for="inputDescription" class="form-label">Input description</label>
+                <input  formControlName="description" type="text" class="form-control" id="inputDescription" name="inputDescription">
+                <div *ngIf="validation[8]" class="form-text text-danger">The description field is required</div>
+              </div>
+              <br>
+              <h2 class="text-center">Achievements</h2>
+              <div formArrayName="achievements">
+                <div *ngFor="let achievement of achievementsArray.controls; let x = index">
+                    <br>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h4>Achievement {{ x+1 }}</h4>
+                        <button (click)="deleteAchievement(x)" type="submit" class="btn p-2 btn-danger d-flex justify-content-center"><h6 class="p-0 m-0">Delete Achievement</h6></button>
+                    </div>
+                    <div [formGroupName]="x">
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <label for="achievementYear" class="form-label">Input achievement date</label>
+                                <input formControlName="year" type="date" class="form-control" id="achievementYear" name="achievementYear">
+                                <div *ngIf="achievementsArray.controls[x].get('year')?.invalid && achievementsArray.controls[x].get('year')?.dirty" class="form-text text-danger">The input achievement date field is required</div>
+                              </div>
+                            <div class="col-8 mb-3">
+                                <label for="inputName" class="form-label">Input achievement name</label>
+                                <input  formControlName="name" type="text" class="form-control" id="inputName" name="inputName">
+                                <div *ngIf="achievementsArray.controls[x].get('name')?.invalid && achievementsArray.controls[x].get('name')?.dirty" class="form-text text-danger">The input achievement name field is required</div>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="d-flex" style="flex-direction: row-reverse;">
+                    <button (click)="addNewAchievement()" type="button" style="border: none;" class="btnAddCustomer p-1 rounded-2 d-flex align-items-center justify-content-center">
+                      <div class="bg-primary d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; border-radius: 100%;">
+                        <h4 class="m-0 p-0 pb-1 text-white">+</h4>
+                      </div>
+                      <div class="ms-1 text-primary">
+                        <h6 class="text-start m-0 p-0">New</h6>
+                        <h6 class="text-start m-0 p-0">Achievement</h6>
+                      </div>
+                    </button>
+                  </div>
+                  <br>
+                  <div  *ngIf="action.name === 'add'; else updateAction" class="row mx-5">
+                    <div class="col">
+                        <button (click)="submitForm()" [disabled]="!reactiveForm.valid" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Submit</button>
+                    </div>
+                  </div>
+                  <ng-template #updateAction>
+                      <div class="row mx-5">
+                        <div class="col">
+                            <button (click)="deletePlayer()" type="submit" class="btn btn-outline-danger w-100 d-flex justify-content-center">Delete</button>
+                        </div>
+                        <div class="col">
+                            <button (click)="saveUpdate()"  [disabled]="!reactiveForm.valid" type="submit" class="btn btn-outline-primary w-100 d-flex justify-content-center">Save</button>
+                        </div>
+                      </div>
+                  </ng-template>
+              </div>
+        </form>
+    </div>
+</div>
+
