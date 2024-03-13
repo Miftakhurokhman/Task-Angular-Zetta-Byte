@@ -1,0 +1,46 @@
+<div class="boxForm">
+    <h2 *ngIf="action.name=='add'; else ActionUpdate">ADD PRODUCT</h2>
+    <ng-template #ActionUpdate>
+        <h2>UPDATE PRODUCT</h2>
+    </ng-template>
+    <form [formGroup]="reactiveForm" class="example-form">
+        <mat-form-field class="inputField example-full-width">
+            <mat-label>Product name</mat-label>
+            <input formControlName="productName" matInput>
+        </mat-form-field>
+        <mat-form-field class="inputField example-full-width">
+            <mat-label>Product price</mat-label>
+            <input formControlName="productPrice" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Product type</mat-label>
+            <mat-select class="inputField" formControlName="type" name="type">
+              <mat-option value="Smartphone">Smartphone</mat-option>
+              <mat-option value="TWS">TWS</mat-option>
+              <mat-option value="Charger">Charger</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field class="inputField example-full-width">
+            <mat-label>Product image</mat-label>
+            <input formControlName="productImage" matInput>
+        </mat-form-field>
+        <mat-form-field class="inputField example-full-width">
+            <mat-label>Product description</mat-label>
+            <input formControlName="productDescription" matInput>
+        </mat-form-field>
+        <mat-form-field class="inputField example-full-width">
+            <mat-label>Product stock</mat-label>
+            <input type="number" formControlName="productStock" matInput>
+        </mat-form-field>
+      </form>
+      <br>
+      <button *ngIf="action.name=='add'; else actionUpdate" mat-raised-button color="primary" (click)="submitForm()">Submit</button>
+      <ng-template #actionUpdate>
+        <div style="display: flex;">
+            <button mat-raised-button color="warn" (click)="deleteProduct()">Delete</button>
+            <button mat-raised-button color="primary" (click)="saveUpdate()">Save</button>
+        </div>
+      </ng-template>
+</div>
+  
+

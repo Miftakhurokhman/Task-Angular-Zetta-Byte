@@ -1,0 +1,24 @@
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <h2>DETAIL PRODUCT</h2>
+    <div id="pageDetail">
+        <div id="boxImage">
+            <img id="productImage" [src]="detailProduct.productImage" alt="">
+            <button (click)="openDetail()" mat-raised-button color="primary">Edit</button>
+        </div>
+        <div id="desc">
+            <h2>{{ detailProduct.productName }}</h2>
+            <h3>{{ detailProduct.productPrice }}</h3>
+            <hr>
+            <div style="display: flex;">
+                <h3>Stock : </h3>
+                <h3>{{ detailProduct.productStock }}</h3>
+            </div>
+            <div style="display: flex;">
+                <h3>Type : </h3>
+                <h3>{{ detailProduct.type }}</h3>
+            </div>
+            <h3>Description</h3>
+            <p>{{ detailProduct.productDescription }}</p>
+        </div>
+    </div>
+</div>

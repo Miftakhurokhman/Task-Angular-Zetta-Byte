@@ -1,0 +1,23 @@
+#pageDetail {
+    display: flex;
+}
+
+#productImage {
+    width: 80vh;
+}
+
+#boxImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 720px) {
+    #pageDetail {
+        flex-direction: column;
+    }
+    
+    #desc {
+        margin: 20px
+    }
+  }
