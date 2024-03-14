@@ -1,0 +1,82 @@
+<div class="boxList">
+    <div style="display: flex; flex-wrap: wrap; width: 100%; justify-content: center;">
+        <div class="col" style="display: flex; flex-direction: column; align-items: center;padding: 0px 10px;">
+            <h2>Search Filter</h2>
+            <div style="display: flex; width: 100%;">
+                <mat-form-field>
+                    <mat-label>Filtering Type</mat-label>
+                    <mat-select (selectionChange)="selectFilterType($event)">
+                        <mat-option value="name">Name</mat-option>
+                        <mat-option value="userType">UserType</mat-option>
+                        <mat-option value="email">Email</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Filtering</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="col" style="display: flex; flex-direction: column; align-items: center;  padding: 0px 10px;">
+            <h2>Filter Status</h2>
+            <mat-form-field style=" width: 100%;">
+                <mat-label>Status</mat-label>
+                <mat-select (selectionChange)="applyStatusFilter($event.value)">
+                    <mat-option value="">All</mat-option>
+                    <mat-option value="Active">Active</mat-option>
+                    <mat-option value="Pending">Pending</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div style="width: 100%; overflow-x: scroll;">
+        <div style="min-width: 1000px;">
+            <div class="headerList mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> NAME </th>
+                    </ng-container>
+                    <ng-container matColumnDef="userType">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%;"> USERTYPE </th>
+                    </ng-container>
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> EMAIL </th>
+                    </ng-container>
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef style="width: 10%;"> STATUS </th>
+                    </ng-container>
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%;"> ACTION </th>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                </table>
+            </div>
+            <div class="mat-elevation-z8">
+                <div class="listMentor">
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                        <ng-container matColumnDef="name">
+                            <td mat-cell *matCellDef="let row" style="width: 30%;"> {{row.civility}} {{row.last_name}} {{row.first_name}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="userType">
+                            <td mat-cell *matCellDef="let row" style="width: 15%;"> {{row.company.user_type}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="email">
+                            <td mat-cell *matCellDef="let row" style="width: 30%;"> {{row.email}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="status">
+                            <td mat-cell *matCellDef="let row" style="width: 10%;">
+                                <mat-icon>{{getStatusIcon(row.user_status)}}</mat-icon>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <td mat-cell *matCellDef="let row" style="width: 15%;">
+                                <button (click)="openPage(row._id)" mat-flat-button color="primary">EDIT</button></td>
+                        </ng-container>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

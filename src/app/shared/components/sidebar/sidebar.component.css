@@ -1,0 +1,9 @@
+/* sidebar.component.css */
+mat-sidenav-container {
+    z-index: 10;
+  }
+  
+  .header {
+    height: 50px;
+  }
+  

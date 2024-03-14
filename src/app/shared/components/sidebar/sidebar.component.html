@@ -1,0 +1,9 @@
+
+<mat-sidenav-container class="sideBar">
+    <mat-sidenav #sidenav mode="side" [opened]="openSideBar">
+      <mat-nav-list>
+        <a mat-list-item (click)="openPage('list')"><h4>LIST USER</h4></a>
+        <a mat-list-item (click)="openPage('add')"><h4>ADD USER</h4></a>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>

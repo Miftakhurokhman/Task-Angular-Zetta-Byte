@@ -1,0 +1,22 @@
+.boxList {
+    padding: 20px;
+}
+
+.listMentor {
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+
+.headerList, mat-paginator {
+    margin-right: 15.5px;
+}
+
+.col {
+    width: 45%;
+}
+
+/* @media screen and (max-width: 800px) {
+    .col {
+        width: 100%;
+    }
+  } */
