@@ -7,7 +7,7 @@
     overflow-y: scroll;
 }
 
-.headerList, mat-paginator {
+.headerList, mat-paginator, #boxAddButton {
     margin-right: 15.5px;
 }
 
@@ -15,8 +15,6 @@
     width: 45%;
 }
 
-/* @media screen and (max-width: 800px) {
-    .col {
-        width: 100%;
-    }
-  } */
+.btnTable {
+    margin: 5px;
+}

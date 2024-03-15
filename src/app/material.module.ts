@@ -12,6 +12,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatDialogModule} from '@angular/material/dialog'
 @NgModule({
     imports: [
         MatIconModule,
@@ -26,7 +30,11 @@ import { MatSortModule } from "@angular/material/sort";
         MatMenuModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatDialogModule
     ],
     exports: [
         MatIconModule,
@@ -41,7 +49,11 @@ import { MatSortModule } from "@angular/material/sort";
         MatMenuModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatDialogModule
     ]
 })
 export class MaterialModule {}

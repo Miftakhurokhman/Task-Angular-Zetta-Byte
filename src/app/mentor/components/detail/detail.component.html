@@ -1,0 +1,36 @@
+<h1 class="center-text">Detail User</h1>
+<mat-dialog-content class="mat-typography">
+  <div class="banner">
+    <mat-icon>man</mat-icon>
+    <h1>
+        {{detailUser.civility + ' ' + detailUser.last_name + ' ' + detailUser.first_name}}
+    </h1>
+    <h2>{{ "ID : " + detailUser._id }}</h2>
+    <div id="descBox">
+        <h2>
+            {{ 'Date of Birth : ' + detailUser.date_of_birth }}
+        </h2>
+        <h2>
+            {{ 'Gender : ' + detailUser.gender }}
+        </h2>
+        <h2>
+            {{ 'Email : ' + detailUser.email }}
+        </h2>
+        <h2>
+            {{ 'User Status : ' + detailUser.user_status }}
+        </h2>
+        <h2>
+            {{ 'Count Document : ' + detailUser.count_document }}
+        </h2>
+        <h2>
+            {{ 'Company Name : ' + detailUser.company.name }}
+        </h2>
+        <h2>
+            {{ 'User Type : ' + detailUser.company.user_type }}
+        </h2>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>BACK</button>
+</mat-dialog-actions>

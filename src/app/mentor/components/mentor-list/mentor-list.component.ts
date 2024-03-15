@@ -5,6 +5,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MentorService } from '../../../shared/mentor.service';
 import { Router } from '@angular/router';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { DetailComponent } from '../detail/detail.component';
+import { AddEditComponent } from '../../../form/components/add-edit/add-edit.component';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: 'app-mentor-list',
@@ -13,6 +17,10 @@ import { Router } from '@angular/router';
 })
 export class MentorListComponent implements AfterViewInit, OnInit {
   dataSource!: MatTableDataSource<any>;
+  data = {
+    name: "",
+    id: ""
+  } 
   displayedColumns: string[] = ['name', 'userType', 'email', 'status', 'action'];
   mentorData!: any[];
   currentFilterType: string = 'name';
@@ -20,15 +28,15 @@ export class MentorListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private http: HttpClient, private _mentorService: MentorService, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(public dialog: MatDialog, private http: HttpClient, private _mentorService: MentorService, private router: Router, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-      console.log("tes")
-      
+
   }
+  
 
   ngAfterViewInit() {
-    console.log('halo')
+    //console.log('halo')
     this._mentorService.getAllMentor().subscribe(data => {
           this.mentorData = data;
           this.dataSource = new MatTableDataSource<any>(this.mentorData);
@@ -36,6 +44,33 @@ export class MentorListComponent implements AfterViewInit, OnInit {
           this.dataSource.sort = this.sort;
           this.cdr.detectChanges();
         })
+  }
+
+  openFormDialog(action: string, id: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    const dialogRef = this.dialog.open(AddEditComponent, {
+      disableClose: true,
+      data: {
+      name: action,
+      id: id
+    }});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
+  openDetailDialog(actionId: string) {
+    const dialogRef = this.dialog.open(DetailComponent, {
+      disableClose: true,
+      data: {
+      id: actionId
+    }});
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 
   selectFilterType(event: any) {
@@ -79,9 +114,10 @@ export class MentorListComponent implements AfterViewInit, OnInit {
     }
   }
 
-  openPage(id: string) {
-    this.router.navigate(['/form'], {queryParams:{action: "update", id: id}})
-  }
+  // openDetail(id: string) {
+
+  //   this.router.navigate(['/form'], {queryParams:{action: "update", id: id}})
+  // }
 
   applyStatusFilter(status: string) {
     this.dataSource.filter = status.trim().toLowerCase();

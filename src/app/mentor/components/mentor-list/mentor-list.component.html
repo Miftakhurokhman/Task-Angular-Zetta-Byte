@@ -29,6 +29,10 @@
             </mat-form-field>
         </div>
     </div>
+    <div id="boxAddButton" style="display: flex; flex-direction: row-reverse;">
+        <button (click)="openFormDialog('add', '')" mat-flat-button color="primary">ADD NEW USER</button>
+    </div>
+    <br>
     <div style="width: 100%; overflow-x: scroll;">
         <div style="min-width: 1000px;">
             <div class="headerList mat-elevation-z8">
@@ -40,13 +44,13 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%;"> USERTYPE </th>
                     </ng-container>
                     <ng-container matColumnDef="email">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> EMAIL </th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 25%;"> EMAIL </th>
                     </ng-container>
                     <ng-container matColumnDef="status">
                         <th mat-header-cell *matHeaderCellDef style="width: 10%;"> STATUS </th>
                     </ng-container>
                     <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 15%;"> ACTION </th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> ACTION </th>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 </table>
@@ -61,7 +65,7 @@
                             <td mat-cell *matCellDef="let row" style="width: 15%;"> {{row.company.user_type}} </td>
                         </ng-container>
                         <ng-container matColumnDef="email">
-                            <td mat-cell *matCellDef="let row" style="width: 30%;"> {{row.email}} </td>
+                            <td mat-cell *matCellDef="let row" style="width: 25%;"> {{row.email}} </td>
                         </ng-container>
                         <ng-container matColumnDef="status">
                             <td mat-cell *matCellDef="let row" style="width: 10%;">
@@ -69,8 +73,10 @@
                             </td>
                         </ng-container>
                         <ng-container matColumnDef="action">
-                            <td mat-cell *matCellDef="let row" style="width: 15%;">
-                                <button (click)="openPage(row._id)" mat-flat-button color="primary">EDIT</button></td>
+                            <td mat-cell *matCellDef="let row" style="width: 20%;">
+                                <button class="btnTable" (click)="openFormDialog('update', row._id)" mat-flat-button color="primary">EDIT</button>
+                                <button class="btnTable" (click)="openDetailDialog(row._id)" mat-flat-button color="primary">DETAIL</button>
+                            </td>
                         </ng-container>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
