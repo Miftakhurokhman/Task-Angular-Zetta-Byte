@@ -1,0 +1,19 @@
+<div class="p-grid">
+  <div id="boxTitle">
+    <h1 class="title">List of Promo</h1>
+    <button (click)="openDialog()" id="addButton" mat-stroked-button color="primary">
+      <div>
+        <h3 style="margin: 0; padding: 0;">
+          ADD NEW
+        </h3>
+        <h3  style="margin: 0; padding: 0;">
+          PROMO
+        </h3>
+      </div>
+    </button>
+  </div>
+  <!-- </div> -->
+  <!-- <div class="p-col-6"> -->
+    <app-promo-card-list [addNewPromo]="addNewPromo"></app-promo-card-list>
+  <!-- </div> -->
+</div>

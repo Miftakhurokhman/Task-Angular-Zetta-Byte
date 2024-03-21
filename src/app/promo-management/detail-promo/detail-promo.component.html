@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Detail Promo {{ detailPromo.ref }}</h1>
+<mat-dialog-content class="mat-typography">
+    <h2 style="font-weight: bold; text-align: center;">{{ detailPromo.title }}</h2>
+    <h4 style="text-align: center; font-weight: bold;">{{ detailPromo.sub_title }}</h4>
+    <hr>
+    <h4>Description</h4>
+    <h4 style="margin-left: 5px;">{{ detailPromo.description }}</h4>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>CLOSE</button>
+  <button (click)="openEdit()" mat-button cdkFocusInitial>EDIT</button>
+</mat-dialog-actions>

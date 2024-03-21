@@ -1,0 +1,14 @@
+<div class="boxList">
+    <div (click)="openDetail(promo._id)" *ngFor="let promo of allPromo" id="promoCard">
+        <mat-card class="example-card">
+            <mat-card-title-group>
+              <mat-card-title [innerHTML]="promo.ref"></mat-card-title>
+              <mat-card-title [innerHTML]="promo.title"></mat-card-title>
+              <mat-card-subtitle [innerHTML]="promo.sub_title"></mat-card-subtitle>
+              <img mat-card-xl-image src="https://th.bing.com/th/id/OIP.R3drHJUlBMv0Jk-peX562wHaFj?rs=1&pid=ImgDetMain" >
+            </mat-card-title-group>
+            <mat-card-content [innerHTML]="promo.description">
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
